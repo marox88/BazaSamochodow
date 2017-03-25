@@ -10,6 +10,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.FilterQueryProvider;
 
 import com.example.rent.bazasamochodow.add.AddNewCarActivity;
+import com.example.rent.bazasamochodow.listing.ListingActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,5 +57,11 @@ public class MainActivity extends AppCompatActivity {
     void onAddNewCarButtonClick() {
         Intent intent = new Intent(this, AddNewCarActivity.class);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.search_button)
+    void onSearchButtonClick() {
+        startActivity(ListingActivity.createIntent(MainActivity.this,
+                autoCompleteTextView.getText().toString()));
     }
 }

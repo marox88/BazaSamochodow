@@ -29,7 +29,7 @@ public class AddNewCarActivity extends AppCompatActivity {
     private MotoDatabaseOpenHelper databaseOpenHelper;
 
     @BindView(R.id.image)
-    ImageView image;
+    ImageView imageView;
 
     @BindView(R.id.year)
     EditText year;
@@ -61,6 +61,11 @@ public class AddNewCarActivity extends AppCompatActivity {
         boolean added = databaseOpenHelper.insertCar(car);
         if(added) {
             Toast.makeText(this, "Dodano nowy samochód", Toast.LENGTH_LONG). show();
+            make.setText(null);
+            model.setText(null);
+            imageUrl = null;
+            imageView.setImageResource(R.drawable.brak_image);
+            year.setText(null);
         }
 
     }
@@ -76,7 +81,7 @@ public class AddNewCarActivity extends AppCompatActivity {
                         imageUrl = urlEditText.getText().toString();
         Glide.with(AddNewCarActivity.this)
                 .load(imageUrl)
-                .into(image);
+                .into(imageView);
 
 
 
